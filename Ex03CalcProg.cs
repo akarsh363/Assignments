@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assignments
 {
@@ -38,7 +34,6 @@ namespace Assignments
                         Console.WriteLine("Enter the valid choice");
                         return 0;
             }
-            while (true);
         }
         static void Main(string[] args)
         {
@@ -55,7 +50,7 @@ namespace Assignments
 
                 Console.WriteLine("The Result is : {0}", result);
 
-                string choice = GetStringValue("Press Y to continue and N to quit");
+                string choice = GetStringValue("Press Y to continue and any other key to quit");
 
                 processing = choice.ToUpper() == "Y" ? true : false;
             }
