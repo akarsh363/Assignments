@@ -1,0 +1,133 @@
+using System;
+using System.Collections.Generic;
+
+namespace Assignments
+    {
+        class Movie
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public int Year { get; set; }
+        }
+
+        class Ex05Crud
+        {
+            static List<Movie> movieList = new List<Movie>();
+
+            static void Main(string[] args)
+            {
+                bool running = true;
+
+                while (running)
+                {
+                    Console.WriteLine("\n--- Movie Database Menu ---");
+                    Console.WriteLine("1. Add Movie");
+                    Console.WriteLine("2. Remove Movie");
+                    Console.WriteLine("3. Find Movie");
+                    Console.WriteLine("4. Update Movie");
+                    Console.WriteLine("5. Exit");
+                    Console.Write("Enter your choice (1-5): ");
+
+                    string choice = Console.ReadLine();
+
+                    switch (choice)
+                    {
+                        case "1":
+                            AddMovie();
+                            break;
+                        case "2":
+                            RemoveMovie();
+                            break;
+                        case "3":
+                            FindMovie();
+                            break;
+                        case "4":
+                            UpdateMovie();
+                            break;
+                        case "5":
+                            running = false;
+                            Console.WriteLine("Exiting program...");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Try again.");
+                            break;
+                    }
+                }
+            }
+
+            static void AddMovie()
+            {
+                Movie newMovie = new Movie();
+
+                Console.Write("Enter Movie ID: ");
+                newMovie.Id = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Enter Movie Name: ");
+                newMovie.Name = Console.ReadLine();
+
+                Console.Write("Enter Release Year: ");
+                newMovie.Year = Convert.ToInt32(Console.ReadLine());
+
+                movieList.Add(newMovie);
+                Console.WriteLine("Movie added successfully!");
+            }
+
+            static void RemoveMovie()
+            {
+                Console.Write("Enter Movie ID to remove: ");
+                int id = Convert.ToInt32(Console.ReadLine());
+
+                Movie movieToRemove = movieList.Find(m => m.Id == id);
+
+                if (movieToRemove != null)
+                {
+                    movieList.Remove(movieToRemove);
+                    Console.WriteLine("Movie removed successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("Movie not found.");
+                }
+            }
+
+            static void FindMovie()
+            {
+                Console.Write("Enter Movie ID to search: ");
+                int id = Convert.ToInt32(Console.ReadLine());
+
+                Movie movie = movieList.Find(m => m.Id == id);
+
+                if (movie != null)
+                {
+                    Console.WriteLine($"Movie Found: ID={movie.Id}, Name={movie.Name}, Year={movie.Year}");
+                }
+                else
+                {
+                    Console.WriteLine("Movie not found.");
+                }
+            }
+
+            static void UpdateMovie()
+            {
+                Console.Write("Enter Movie ID to update: ");
+                int id = Convert.ToInt32(Console.ReadLine());
+
+                Movie movie = movieList.Find(m => m.Id == id);
+
+                if (movie != null)
+                {
+                    Console.Write("Enter new name: ");
+                    movie.Name = Console.ReadLine();
+
+                    Console.Write("Enter new release year: ");
+                    movie.Year = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Movie updated successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("Movie not found.");
+                }
+            }
+        }
+    }
