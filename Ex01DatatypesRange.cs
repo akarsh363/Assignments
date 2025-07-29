@@ -2,7 +2,7 @@ using System;
 
 namespace Assignments
 {
-    internal class DataTypesRange
+    internal class Ex01DatatypesRange
     {   
         // Integer Types...
         static void IntegralTypes()
