@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+
+namespace Assignments
+{
+    internal class Ex04Arrays
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the size of the array: ");
+            int size = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter the type of array (int, string, char, float): ");
+            string type = Console.ReadLine().ToLower();
+
+            Console.WriteLine($"Enter {size} values of type {type}:");
+
+            Function (type,size);
+        }
+
+        static void Function (string type,int size)
+         {
+            switch(type) 
+            {
+                case "int":
+                    List<int> intList = new List<int>();
+                    for (int i = 0; i<size; i++)
+                    {
+                        Console.Write($"Element {i + 1}: ");
+                        intList.Add(Convert.ToInt32(Console.ReadLine()));
+                    }
+                    Console.WriteLine("Array Contents:");
+                    foreach (var item in intList)
+                        Console.WriteLine(item);
+                    break;
+
+                case "string":
+                    List<string> stringList = new List<string>();
+                    for (int i = 0; i<size; i++)
+                    {
+                        Console.Write($"Element {i + 1}: ");
+                        stringList.Add(Console.ReadLine());
+                    }
+                    Console.WriteLine("Array Contents:");
+                    foreach (var item in stringList)
+                         Console.WriteLine(item);
+                    break;
+
+                case "char":
+                List<char> charList = new List<char>();
+                for (int i = 0; i < size; i++)
+                {
+                Console.Write($"Element {i + 1}: ");
+                charList.Add(Convert.ToChar(Console.ReadLine()));
+                }
+                Console.WriteLine("Array Contents:");
+                foreach (var item in charList)
+                     Console.WriteLine(item);
+                break;
+
+                case "float":
+                List<float> floatList = new List<float>();
+                for (int i = 0; i < size; i++)
+                {
+                Console.Write($"Element {i + 1}: ");
+                floatList.Add(float.Parse(Console.ReadLine()));
+                }
+                Console.WriteLine("Array Contents:");
+                foreach (var item in floatList)
+                      Console.WriteLine(item);
+                break;
+
+                default:
+                Console.WriteLine("Invalid data type entered.");
+                break;
+             }
+
+                Console.ReadLine(); // Pause at the end
+        }
+    }
+}
+
