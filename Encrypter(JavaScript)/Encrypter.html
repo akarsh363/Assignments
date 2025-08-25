@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypter Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            const encrypterSentence = "the quick brown fox jumps over the lazy dog";
+            const words = encrypterSentence.split(' ');
+
+            function searchWord(char) {
+                if (char === ' ') {
+                    return '-';
+                }
+
+                for (let i = 0; i < words.length; i++) {
+                    let word = words[i];
+                    let idx = word.indexOf(char);
+                    if (idx !== -1) {
+                        return `${i}${idx}`;
+                    }
+                }
+                return "";
+            }
+
+            function encryptSentence() {
+                const demoword = document.getElementById("userInput").value.toLowerCase();
+                const encodedValue = [];
+
+                for (let i = 0; i < demoword.length; i++) {
+                    const char = demoword[i];
+                    const res = searchWord(char);
+                    encodedValue.push(res);
+                }
+
+                document.getElementById("result").innerText = "The Encrypted Code is: " + encodedValue.join(', ');
+            }
+
+            document.getElementById("encryptBtn").addEventListener("click", encryptSentence);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Encrypted Application</h1>
+    <p>Enter a sentence to encrypt</p>
+    <input type="text" id="userInput" placeholder="Your sentence.." />
+    <button id="encryptBtn">Encrypt</button>
+    <p id="result">The Encrypted Code is: </p>
+</body>
+
+</html>
