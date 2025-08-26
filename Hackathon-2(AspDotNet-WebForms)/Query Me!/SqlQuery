@@ -1,0 +1,9 @@
+SELECT
+    e.Name AS emp_Name,
+    m.Name AS mgr_name
+FROM 
+    Employee e
+LEFT JOIN 
+    Employee m ON e.Manager_Id = m.Emp_Id
+ORDER BY 
+    e.Name;
